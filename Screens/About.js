@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { StyleSheet, View, Text} from 'react-native';
+
 
 export default function About() {
     return (
-        <View style={Styles.container}>
+        <View style={styles.container}>
             <Text>About screen</Text>
         </View>
     )
