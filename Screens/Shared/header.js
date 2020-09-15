@@ -1,16 +1,26 @@
-import React from 'react' ;
-import { Stylesheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 
-export default function Header() {
-    return(
-        <View style={styles.header}>
-            <View>
-                <Text style={styles.headerText}>GameZone Header</Text>
+export default function Header({ navigation, title }) {
+
+    const openMenu = () => {
+        Navigation.openDrawer();
+    }
+
+    return (
+        <ImageBackground source={require('../../assets/Images/game_bg.png')} style={styles.header}>
+            <MaterialIcons name='menu' size={28} onPress={openMenu} styles={styles.icon} />
+            <View style={styles.headerTitle}>
+                <Image source={require('../../assets/Images/heart_logo.png')} style={styles.headerImage} />
+                <Text style={styles.headerText}>Gamezone{title}</Text>
             </View>
-        </View>
+
+        </ImageBackground>
     );
 }
+
 const styles = StyleSheet.create({
     header: {
         width: '100%',
@@ -24,6 +34,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         color: '#333',
-        letterspacing: 1,
+        letterSpacing: 1,
     },
-});
+    icon: {
+        position: 'absolute',
+        left: 20
+    },
+    headerTitle: {
+        flexDirection: 'row',
+    },
+    headerImage: {
+        width: 26,
+        height: 26,
+        marginHorizontal: 10
+    }
+})

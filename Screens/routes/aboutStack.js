@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import About from '../about';
+import About from '../About';
 import React from 'react';
 import Header from '../Shared/header';
 
@@ -12,7 +12,7 @@ const Screens = {
     },
 }
    
-const AboutStack = createStackNavigator(Screens, {
+const AboutStack = createStackNavigator (Screens, {
     defaultNavigationOptions: {
         headerTintColor: 'red',
         headerStyle: { backgroundColor: 'blue', height: 100},

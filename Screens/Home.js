@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text,FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text,FlatList, TouchableOpacity, Modal } from 'react-native';
 import {globalStyles} from './Styles/global';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
+    const [modalOpen, setModalopen] = useState(false);
     const [reviews, setReviews] = useState([
     { title: 'personal information', rating: 5, body: 'Player Name is Rimsha Mehmood ', key: '1'},
     { title: 'Game select', rating: 4, body: 'Counter Strike', key: '2'},
@@ -12,6 +14,28 @@ export default function Home({ navigation }) {
 
     return(
         <View style={globalStyles.container}>
+            <Modal visible={modalOpen} animationType='slide'>
+                <View style= {StyleSheet.modalContent}>
+                 <MaterialIcons
+                  name='close'
+                  size={24}
+                  style={style.modalToggle}
+                  onPress={() => setModalopen(false) }
+                /> 
+                <Text>Hello from the Modal :)</Text>
+              </View>
+            </Modal>
+
+            <MaterialIcons
+            name='add'
+            size={24}
+            style={style.modalToggle}
+            onPress={() => setModalopen(true) }
+            />
+
+
+
+
             <FlatList
             data={reviews}
             renderItem={({ item }) => (
@@ -21,4 +45,25 @@ export default function Home({ navigation }) {
             )}
         />
     </View>
-)}
+)
+
+}
+
+const Styles= StyleSheet.create({
+    modalToggle: {
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center',
+    }
+})
+
+
+
+
+
+
+
+
